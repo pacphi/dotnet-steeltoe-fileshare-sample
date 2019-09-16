@@ -5,8 +5,8 @@
 
 Based upon a modified Steeltoe document sample [here](https://steeltoe.io/docs/steeltoe-smb/).
 
-a) Dotnet Core (ASP.Net Core), inside src/AspNetCore/SMBFileShares
-b) Dotnet Framework (ASP.Net 4.6.1), inside src/AspNet4/NetworkFileShares4x/SMBFileShares4x
+* Dotnet Core (ASP.Net Core), inside src/AspNetCore/SMBFileShares
+* Dotnet Framework (ASP.Net 4.6.1), inside src/AspNet4/NetworkFileShares4x/SMBFileShares4x
 
 
 ## Prerequisites
@@ -22,12 +22,17 @@ b) Dotnet Framework (ASP.Net 4.6.1), inside src/AspNet4/NetworkFileShares4x/SMBF
 
 ### Build AspDotNetCore
 
-cd C:\Users\cphillipson\source\repos\Samples\FileShares\src\AspNetCore\SMBFileShares
+```
+cd C:\workspaces\Samples\FileShares\src\AspNetCore\SMBFileShares
 dotnet publish -f netcoreapp2.2 -r win10-x64
+```
 
 ### Build AspDotNet Framework
 
-cd C:\Users\cphillipson\source\repos\Samples\FileShares\src\AspNet4\NetworkFileShares4x
+```
+cd C:\workspaces\Samples\FileShares\src\AspNet4\NetworkFileShares4x
+```
+
 Open the .sln file in Visual Studio 2019 Community Edition
 Right click on project, then select Publish
 
@@ -41,7 +46,7 @@ cf t -o {org} -s {space}
 ### Create Credhub instance
 
 ```
-cd C:\Users\cphillipson\source\repos\Samples\FileShares
+cd C:\workspaces\Samples\FileShares
 .\scripts\cf-create-service.ps1
 ```
 > you will need to pass in arguments to override the defaults in script above
@@ -49,7 +54,7 @@ cd C:\Users\cphillipson\source\repos\Samples\FileShares
 ### Push AspDotNetCore
 
 ```
-cd C:\Users\cphillipson\source\repos\Samples\FileShares\src\AspNetCore\SMBFileShares
+cd C:\workspaces\Samples\FileShares\src\AspNetCore\SMBFileShares
 cf push -f manifest-windows.yml -p bin/Debug/netcoreapp2.2/win10-x64/publish
 ```
 > this will push to Windows 2016 stack
@@ -57,7 +62,7 @@ cf push -f manifest-windows.yml -p bin/Debug/netcoreapp2.2/win10-x64/publish
 ### Push ASPDotNet Framework
 
 ```
-cd C:\Users\cphillipson\source\repos\Samples\FileShares\src\AspNet4\NetworkFileShares4x\SMBFileShares4x
+cd C:\workspaces\Samples\FileShares\src\AspNet4\NetworkFileShares4x\SMBFileShares4x
 cf push -f manifest-windows.yml -p bin/Debug/net461/win10-x64/publish
 ```
 > this will push to Windows 2016 stack
