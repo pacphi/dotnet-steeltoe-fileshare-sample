@@ -5,15 +5,15 @@
 
 Based upon a modified Steeltoe document sample [here](https://steeltoe.io/docs/steeltoe-smb/).
 
-* Dotnet Core (ASP.Net Core), inside src/AspNetCore/SMBFileShares
-* Dotnet Framework (ASP.Net 4.6.1), inside src/AspNet4/NetworkFileShares4x/SMBFileShares4x
+* Dotnet Core (ASP.Net Core), inside `src/AspNetCore/SMBFileShares`
+* Dotnet Framework (ASP.Net 4.6.1), inside `src/AspNet4/NetworkFileShares4x/SMBFileShares4x`
 
 
 ## Prerequisites
 
 * Pivotal Application Service for Windows 2.4 or better
 * Visual Studio Community Edition 2019 or better
-* Dotnet Framework SDK 4.6.1
+* Dotnet Framework SDK 4.6.1 or better
 * Dotnet Core SDK 2.2.401 or better
 * CF CLI 6.46.1 or better
 
@@ -33,8 +33,9 @@ dotnet publish -f netcoreapp2.2 -r win10-x64
 cd C:\workspaces\Samples\FileShares\src\AspNet4\NetworkFileShares4x
 ```
 
-Open the .sln file in Visual Studio 2019 Community Edition
-Right click on project, then select Publish
+* Open the .sln file in Visual Studio 2019 Community Edition
+* Right click on project, then select Publish
+  * You will need to set the path to `bin/Debug/net461/win10-x64/publish`
 
 ### Connect and target a foundation
 
@@ -68,7 +69,9 @@ cf push -f manifest-windows.yml -p bin/Debug/net461/win10-x64/publish
 > this will push to Windows 2016 stack
 
 
-### Optional) deploymemnt to windows2012R2 stack (if available)
+### Optional
+
+#### Deployment to windows2012R2 stack (if available)
 
 ```
 cf push -f manifest-windows.yml -p bin/Debug/net461/win10-x64/publish -s windows2012R2 smbfileshares4x-2012R2
