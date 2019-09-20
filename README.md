@@ -87,3 +87,15 @@ cf push -f manifest-windows.yml -p bin/Debug/net461/win10-x64/publish
 ```
 cf push -f manifest-windows.yml -p bin/Debug/net461/win10-x64/publish -s windows2012R2 smbfileshares4x-2012R2
 ```
+
+### Also interesting
+
+#### on PAS 2.4 or better
+
+* [Enabling Volume Services](https://docs.pivotal.io/pivotalcf/2-6/opsguide/enable-vol-services.html)
+* [Using an External File System (Volume Services)](https://docs.pivotal.io/pivotalcf/2-6/devguide/services/using-vol-services.html)
+
+#### on PAS 2.1 - 2.3 
+
+* [Run .NET Framework Apps on a Modern Platform with an SMB Network Share? Steeltoe Makes It Easy](https://content.pivotal.io/dotnet/run-net-framework-apps-on-a-modern-platform-with-an-smb-network-share-steeltoe-makes-it-easy)
+* [Dotnet Core sample app deployed on cflinuxfs3 stack connecting to a Windows file share](https://github.com/tezizzm/SmbDemoCore)
