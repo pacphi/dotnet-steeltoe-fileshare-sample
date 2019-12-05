@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using System;
 
 namespace SMBFileShares4x.Controllers
 {
@@ -43,7 +44,7 @@ namespace SMBFileShares4x.Controllers
         {
             using (WindowsNetworkFileShare networkPath = new WindowsNetworkFileShare(sharePath, ShareCredentials))
             {
-                return Json(Directory.EnumerateFiles(sharePath), JsonRequestBehavior.AllowGet);
+                return Json(GetFiles(sharePath), JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -56,5 +57,34 @@ namespace SMBFileShares4x.Controllers
 
             return Json("File deleted successfully", JsonRequestBehavior.AllowGet);
         }
+
+        static IEnumerable<string> GetFiles(string path) {
+            Queue<string> queue = new Queue<string>();
+            queue.Enqueue(path);
+            while (queue.Count > 0) {
+                path = queue.Dequeue();
+                try {
+                    foreach (string subDir in Directory.GetDirectories(path)) {
+                        queue.Enqueue(subDir);
+                    }
+                }
+                catch(Exception ex) {
+                    Console.Error.WriteLine(ex);
+                }
+                string[] files = null;
+                try {
+                    files = Directory.GetFiles(path);
+                }
+                catch (Exception ex) {
+                    Console.Error.WriteLine(ex);
+                }
+                if (files != null) {
+                    for(int i = 0 ; i < files.Length ; i++) {
+                        yield return files[i];
+                    }
+                }
+            }
+        }
+
     }
 }
