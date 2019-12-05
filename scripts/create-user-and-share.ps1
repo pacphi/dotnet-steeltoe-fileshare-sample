@@ -2,7 +2,7 @@ Param(
 	[string]$shareName = "steeltoe_network_share",
 	[string]$folderPath = "c:\steeltoe_network_share",
 	[string]$username = "shareWriteUser",
-	[string]$password = "thisIs1Pass!"
+	[string]$password = "thisIs1Pass!1234"
 )
 $ErrorActionPreference = "Stop"
 
